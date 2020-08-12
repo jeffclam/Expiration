@@ -4,3 +4,7 @@ import * as api from '../../api'
 export const saveExpirable = (expirable) => {
     return api.call(api.APIPath.expirable, api.Method.POST, expirable)
 }
+
+export const fetchExpirables = () => {
+    return api.call(api.APIPath.expirable, api.Method.GET)
+}

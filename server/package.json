@@ -2,13 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server to the expiration app",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.0",
+    "underscore": "^1.10.2"
   }
 }

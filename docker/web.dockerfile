@@ -10,5 +10,4 @@ RUN npm install
 
 COPY ./webapp ./
 
-CMD ["npm", "start"]
-# CMD tail -f /dev/null
+CMD ["npx", "concurrently", "npm:start"]

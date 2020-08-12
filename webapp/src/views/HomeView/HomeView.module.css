@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -6,7 +11,7 @@
     width: 50%;
 }
 
-.form_title {
+.title {
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
@@ -23,4 +28,16 @@
 .submit_button {
     margin-top: 6px;
     width: 100px;
+}
+
+.expirables_list_container {
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 30%;
+    text-align: left;
+}
+
+.expirables_list {
+    list-style-type: square;
+    margin-left: -40px;
 }

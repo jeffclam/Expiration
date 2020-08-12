@@ -17,5 +17,5 @@ export const call = (url, method, payload) => {
 
     return fetch(url, option)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => data)
 }
