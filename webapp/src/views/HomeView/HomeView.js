@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import styles from './HomeView.module.css'
 import { saveExpirable, fetchExpirables } from './api'
 import _ from 'lodash'
@@ -33,15 +33,28 @@ const HomeView = () => {
     }
 
     const renderExpirables = () => {
-        const items = _.map(expirables, (expirable) => {
-            const date = new Date(expirable.expirationDate)
-            const daysLeft = Math.ceil((date - new Date()) / (1000 * 60 * 60 * 24))
-            return (
-                <li key={expirable._id}>{expirable.itemName} - {daysLeft} day(s) left</li>
-            )
+        const expirableByCategory = {}
+        _.each(expirables, (item) => {
+            if (expirableByCategory[item.category]) {
+                expirableByCategory[item.category].push(item)
+            } else {
+                expirableByCategory[item.category] = [item]
+            }
         })
 
-        return <ul className={styles.expirables_list}>{items}</ul>
+        return _.map(expirableByCategory, (categorySet, categoryName) => {
+            const items = _.map(categorySet, (expirable) => {
+                const date = new Date(expirable.expirationDate)
+                const daysLeft = Math.ceil((date - new Date()) / (1000 * 60 * 60 * 24))
+                return <li className={styles.expirables_list_item} key={expirable._id}>{expirable.itemName} - {daysLeft} day(s) left</li>
+            })
+            return (
+                <Fragment key={categoryName}>
+                    <div className={styles.categoryName}>{categoryName}</div>
+                    <ul className={styles.expirables_list}>{items}</ul>
+                </Fragment>
+            )
+        })
     }
 
     return (
