@@ -11,7 +11,7 @@ export const APIPath = {
 export const call = (url, method, payload) => {
     const option = {
         method: method,
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
     }
 
