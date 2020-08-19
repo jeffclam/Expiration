@@ -20,8 +20,9 @@ const Calendar = ({ expirables }) => {
 
     const renderDay = (date) => {
         const daysItems = monthsItems[GetDateString(date)]
+        const expiredStyle = date < focusDate ? styles.expired : ''
         const list = _.map(daysItems, item => {
-            return <div key={item._id}>{item.itemName}</div>
+            return <div className={expiredStyle} key={item._id}>{item.itemName}</div>
         })
 
         return (
@@ -73,7 +74,7 @@ const Calendar = ({ expirables }) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.month_name}>{focusDate.toLocaleString('default', { month: 'long' })}</div>
+            <div className={styles.month_name}>{focusDate.toLocaleString('default', { month: 'long' })} {focusDate.getFullYear()}</div>
             <div className={styles.weekdays}>
                 {_.map(weekdays, (weekday) => { return <div className={styles.weekday} key={weekday}>{weekday}</div> })}
             </div>

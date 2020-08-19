@@ -1,26 +1,30 @@
 .container {
     width: 70%;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px 20px 0 10px;
 }
 
 .month_name {
     font-size: 24px;
     font-weight: 500;
-    margin-right: -1px;
+    margin-left: -2px;
+    margin-right: -2px;
     padding: 10px 0;
     border: 1px solid;
     border-bottom: 0;
+    background-color: black;
+    color: white;
 }
 
 .weekdays {
     display: flex;
     justify-content: space-between;
-    margin-right: -1px;
+    margin-left: -2px;
+    margin-right: -2px;
     padding-bottom: 5px;
     border: 1px solid;
     border-top: 0;
+    background-color: black;
+    color: white;
 }
 
 .weekday {
@@ -42,6 +46,7 @@
     margin-top: -1px;
     margin-right: -1px;
     border: 1px solid;
+    font-size: 12px;
 }
 
 .day_number {
@@ -53,4 +58,8 @@
 .day_list {
     display: flex;
     flex-direction: column;
+}
+
+.expired {
+    color: brown;
 }

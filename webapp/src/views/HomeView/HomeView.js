@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import styles from './HomeView.module.css'
 import { saveExpirable, fetchExpirables } from './api'
-import { GetDateString } from '../../common/utils'
+import { GetDateString, GetDiffInDays } from '../../common/utils'
 import _ from 'lodash'
 import Calendar from '../../components/Calendar'
 
@@ -34,20 +34,20 @@ const HomeView = () => {
         event.preventDefault()
     }
 
-    const renderExpirables = () => {
-        const expirableByCategory = {}
-        _.each(expirables, (item) => {
-            if (expirableByCategory[item.category]) {
-                expirableByCategory[item.category].push(item)
-            } else {
-                expirableByCategory[item.category] = [item]
-            }
+    const renderExpirablesList = () => {
+        const monthsExpirables = _.filter(expirables, item => {
+            return new Date(item.expirationDate) > new Date()
         })
 
+        if (!monthsExpirables.length) {
+            return <div>No expirables left this month</div>
+        }
+
+        const expirableByCategory = _.groupBy(monthsExpirables, item => item.category)
         return _.map(expirableByCategory, (categorySet, categoryName) => {
             const items = _.map(categorySet, (expirable) => {
                 const date = new Date(expirable.expirationDate)
-                const daysLeft = Math.ceil((date - new Date()) / (1000 * 60 * 60 * 24))
+                const daysLeft = GetDiffInDays(date, new Date())
                 return <li className={styles.expirables_list_item} key={expirable._id}>{expirable.itemName} - {daysLeft} day(s) left</li>
             })
             return (
@@ -60,9 +60,13 @@ const HomeView = () => {
     }
 
     return (
-        <>
-            <Calendar expirables={expirables}/>
+        <div className={styles.page}>
+            <Calendar expirables={expirables} />
             <div className={styles.container}>
+                <div className={styles.expirables_list_container}>
+                    <div className={styles.title}>Expirables</div>
+                    {renderExpirablesList()}
+                </div>
                 <form className={styles.form} onSubmit={submit}>
                     <div className={styles.title}>Insert Expirable</div>
                     <label className={styles.input_wrapper}>
@@ -74,7 +78,7 @@ const HomeView = () => {
                 <input className={styles.input} type="text" value={category} placeholder="Category" onChange={({ target }) => { setCategory(target.value) }} />
                     </label>
                     <label className={styles.input_wrapper}>
-                        Expiration Date:
+                        Exp. Date:
                 <input className={styles.input} type="date" value={expirationDate} onChange={({ target }) => { setDate(target.value) }} />
                     </label>
                     <label className={styles.input_wrapper}>
@@ -83,12 +87,8 @@ const HomeView = () => {
                     </label>
                     <input className={styles.submit_button} type="submit" />
                 </form>
-                <div className={styles.expirables_list_container}>
-                    <div className={styles.title}>Expirables</div>
-                    {renderExpirables()}
-                </div>
             </div>
-        </>
+        </div>
     )
 }
 

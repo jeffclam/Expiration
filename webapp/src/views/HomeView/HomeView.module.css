@@ -1,24 +1,29 @@
-.container {
+.page {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-top: 20px;
-    width: 50%;
 }
 
 .title {
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 600;
+    text-align: center;
 }
 
 .input_wrapper {
+    display: flex;
+    justify-content: left;
     margin: 5px 0;
 }
 
@@ -27,15 +32,15 @@
 }
 
 .submit_button {
-    margin-top: 6px;
+    margin-top: 10px;
     width: 100px;
 }
 
 .expirables_list_container {
     margin-top: 20px;
-    margin-left: 50px;
-    width: 30%;
     text-align: left;
+    height: 40%;
+    overflow-x: hidden;
 }
 
 .categoryName {
