@@ -1,4 +1,4 @@
-import * as api from '../../api'
+import * as api from '../api'
 
 // saveExpirable sends an expirable item to the server to be saved
 export const saveExpirable = (expirable) => {

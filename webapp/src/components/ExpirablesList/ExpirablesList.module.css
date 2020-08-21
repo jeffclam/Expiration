@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.expirables_list_container {
+    margin-top: 20px;
+    text-align: left;
+    height: 40%;
+    overflow-x: hidden;
+}
+
+.categoryName {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.expirables_list {
+    list-style-type: none;
+    margin: 0 0 15px -40px;
+}
+
+.expirables_list_item {
+    margin: 4px 0;
+}
