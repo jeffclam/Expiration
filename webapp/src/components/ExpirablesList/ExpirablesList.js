@@ -3,7 +3,7 @@ import styles from './ExpirablesList.module.css'
 import { GetDiffInDays } from '../../common/utils'
 import _ from 'lodash'
 
-const ExpirablesList = ({ expirables, setExpirables, saveExpirable }) => {
+const ExpirablesList = ({ expirables }) => {
     const renderExpirablesList = () => {
         const monthsExpirables = _.filter(expirables, item => {
             return new Date(item.expirationDate) > new Date()
