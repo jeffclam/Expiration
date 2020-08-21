@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './HomeView.module.css'
 import { saveExpirable, fetchExpirables } from '../../common/api'
-import _ from 'lodash'
 import Calendar from '../../components/Calendar'
 import ExpirablesList from '../../components/ExpirablesList'
 import ExpirableForm from '../../components/ExpirableForm'
