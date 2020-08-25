@@ -1,13 +1,3 @@
-export const Method = {
-    GET: 'GET',
-    POST: 'POST',
-    PUT: 'PUT',
-}
-
-export const APIPath = {
-    expirable: '/api/expirable'
-}
-
 export const call = (url, method, payload) => {
     const option = {
         method: method,

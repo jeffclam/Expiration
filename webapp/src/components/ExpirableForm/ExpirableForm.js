@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import styles from './ExpirableForm.module.css'
 import { GetDateString } from '../../common/utils'
-import { saveExpirable } from '../../common/api'
+import { saveExpirable } from '../../store/expirables/expirablesActions'
+import { useDispatch } from 'react-redux'
 
-const ExpirableForm = ({ callback }) => {
+const ExpirableForm = () => {
+    const dispatch = useDispatch()
     const [itemName, setItem] = useState('')
     const [category, setCategory] = useState('')
     const [expirationDate, setDate] = useState(GetDateString(new Date()))
@@ -11,14 +13,11 @@ const ExpirableForm = ({ callback }) => {
 
     const submit = (event) => {
         if (itemName && category) {
-            saveExpirable({ itemName, category, expirationDate, lifeSpan }).then(
-                expirables => {
+            dispatch(saveExpirable({ itemName, category, expirationDate, lifeSpan })).then(
+                () => {
                     setItem('')
                     setCategory('')
                     setDate(GetDateString(new Date()))
-                    if (callback) {
-                        callback(expirables)
-                    }
                 }
             )
         } else {

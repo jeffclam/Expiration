@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './HomeView.module.css'
-import { fetchExpirables } from '../../common/api'
 import Calendar from '../../components/Calendar'
 import ExpirablesList from '../../components/ExpirablesList'
 import ExpirableForm from '../../components/ExpirableForm'
+import { fetchExpirables } from '../../store/expirables/expirablesActions'
 
 const HomeView = () => {
-    const [expirables, setExpirables] = useState([])
-
+    const dispatch = useDispatch()
+    const expirables = useSelector(store => store.expirables)
+    
     useEffect(() => {
-        fetchExpirables().then(results => {
-            setExpirables(results)
-        })
-    }, [])
+        dispatch(fetchExpirables())
+    }, [dispatch])
 
     return (
         <div className={styles.page}>
             <Calendar expirables={expirables} />
             <div className={styles.sidebar}>
                 <ExpirablesList expirables={expirables} />
-                <ExpirableForm callback={newExpirables => setExpirables([...expirables, ...newExpirables])} />
+                <ExpirableForm />
             </div>
         </div>
     )
