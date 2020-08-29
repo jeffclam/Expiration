@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import expirationReducer from './expirables/expirablesReducer'
+import expirationReducer from './reducers/expirables'
 
 export default configureStore({
     reducer: expirationReducer,

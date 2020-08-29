@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './ExpirableForm.module.css'
 import { GetDateString } from '../../common/utils'
-import { saveExpirable } from '../../store/expirables/expirablesActions'
+import { saveExpirable } from '../../store/actions'
 import { useDispatch } from 'react-redux'
 
 const ExpirableForm = () => {

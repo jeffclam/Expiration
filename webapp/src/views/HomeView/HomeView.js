@@ -4,7 +4,7 @@ import styles from './HomeView.module.css'
 import Calendar from '../../components/Calendar'
 import ExpirablesList from '../../components/ExpirablesList'
 import ExpirableForm from '../../components/ExpirableForm'
-import { fetchExpirables } from '../../store/expirables/expirablesActions'
+import { fetchExpirables } from '../../store/actions'
 
 const HomeView = () => {
     const dispatch = useDispatch()
