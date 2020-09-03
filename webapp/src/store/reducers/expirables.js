@@ -7,7 +7,7 @@ const initialState = {
     saveErr: null,
 }
 
-const reducer = createReducer(initialState, {
+export const expirablesReducer = createReducer(initialState, {
     [ACTIONS.FETCH_EXPIRABLES_COMPLETE]: (state, action) => {
         const { payload } = action
         const { expirables, err } = payload
@@ -35,5 +35,3 @@ const reducer = createReducer(initialState, {
         })
     },
 })
-
-export default reducer

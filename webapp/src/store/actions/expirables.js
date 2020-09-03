@@ -8,7 +8,7 @@ export const fetchExpirables = () => {
             type: ACTIONS.FETCH_EXPIRABLES,
         })
 
-        api.call(APIPaths.expirable, 'GET').then(
+        return api.call(APIPaths.expirable, 'GET').then(
             (expirables) => {
                 dispatch({
                     type: ACTIONS.FETCH_EXPIRABLES_COMPLETE,
@@ -28,7 +28,7 @@ export const fetchExpirables = () => {
 // saveExpirable sends an expirable item to the server to be saved
 export const saveExpirable = (expirable) => {
     return (dispatch) => {
-        api.call(APIPaths.expirable, 'POST', expirable).then(
+        return api.call(APIPaths.expirable, 'POST', expirable).then(
             (expirable) => {
                 dispatch({
                     type: ACTIONS.SAVE_EXPIRABLE_COMPLETE,

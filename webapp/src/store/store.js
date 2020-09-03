@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
-import expirationReducer from './reducers/expirables'
-
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import reducers from './reducers'
+const rootReducer = combineReducers(reducers)
 export default configureStore({
-    reducer: expirationReducer,
+    reducer: rootReducer,
 })

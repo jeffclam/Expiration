@@ -5,14 +5,12 @@ import { GetDateString } from '../../common/utils'
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const Calendar = ({ expirables }) => {
-    const [focusDate] = useState(new Date())
+const Calendar = ({ expirables, focusDate }) => {
     const [monthsItems, setMonthsItems] = useState({})
 
     useEffect(() => {
         const items = _.filter(expirables, item => {
-            const expDate = new Date(item.expirationDate)
-            return expDate.getMonth() === focusDate.getMonth() && expDate.getFullYear() === focusDate.getFullYear()
+            return new Date(item.expirationDate).getFullYear() === focusDate.getFullYear()
         })
         const sortedItems = _.groupBy(items, item => item.expirationDate)
         setMonthsItems(sortedItems)
